@@ -20,6 +20,28 @@ public class ConsumidorModel {
     @Column(name = "segundo_apellido_consumidor")
     private String segundoApellidoConsumidor;
 
+    @Column(name = "contrasenia")
+    private String contrasenia;
+
+    @Column(name = "email_consumidor")
+    private String email_consumidor;
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public String getEmail_consumidor() {
+        return email_consumidor;
+    }
+
+    public void setEmail_consumidor(String email_consumidor) {
+        this.email_consumidor = email_consumidor;
+    }
+
     public int getId_consumidor() {
         return id_consumidor;
     }

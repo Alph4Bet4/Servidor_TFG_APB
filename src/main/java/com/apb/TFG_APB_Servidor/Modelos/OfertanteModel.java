@@ -23,10 +23,30 @@ public class OfertanteModel {
     @Column(name = "segundo_apellido_ofertante")
     private String segundoApellidoOfertante;
 
+    @Column(name = "contrasenia")
+    private String contrasenia;
+
     @Column(name = "nombre_empresa")
     private String nombreEmpresa;
 
+    @Column(name = "email_ofertante")
+    private String email_ofertante;
 
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public String getEmail_ofertante() {
+        return email_ofertante;
+    }
+
+    public void setEmail_ofertante(String email_ofertante) {
+        this.email_ofertante = email_ofertante;
+    }
 
     public int getId_ofertante() {
         return id_ofertante;
