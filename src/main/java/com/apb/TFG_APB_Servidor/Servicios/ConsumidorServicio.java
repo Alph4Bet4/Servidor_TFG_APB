@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Servicios;
 
+import com.apb.TFG_APB_Servidor.Controladores.EmailController;
 import com.apb.TFG_APB_Servidor.Modelos.ConsumidorModel;
 import com.apb.TFG_APB_Servidor.Repositorios.IConsumidorRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,11 @@ public class ConsumidorServicio {
     }
 
     public ConsumidorModel guardarConsumidor(ConsumidorModel nuevoConsumidor) {
-        return consumidorRepositorio.save(nuevoConsumidor);
+        EmailController controladorEmail = new EmailController();
+        if (controladorEmail.validar(nuevoConsumidor.getEmail_consumidor())) {
+            return consumidorRepositorio.save(nuevoConsumidor);
+        }
+        return null;
     }
 
     public Optional<ConsumidorModel> getConsumidorPorId(int id) {
@@ -32,11 +37,14 @@ public class ConsumidorServicio {
         consumidorUsuario.setNombreConsumidor(consumidor.getNombreConsumidor());
         consumidorUsuario.setPrimerApellidoConsumidor(consumidor.getPrimerApellidoConsumidor());
         consumidorUsuario.setSegundoApellidoConsumidor(consumidor.getSegundoApellidoConsumidor());
+        //TODO hashear contraseñas
+        consumidorUsuario.setContrasenia(consumidor.getContrasenia());
+        consumidorUsuario.setEmail_consumidor(consumidor.getEmail_consumidor());
 
         return consumidorUsuario;
     }
 
-    public Boolean borrarConsumidorPorId(int id) {
+    public boolean borrarConsumidorPorId(int id) {
         try {
             consumidorRepositorio.deleteById(id);
             return true;
