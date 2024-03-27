@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/actividades")
+@RequestMapping("/actividad")
 public class ActividadesController {
 
     @Autowired
