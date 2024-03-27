@@ -25,6 +25,19 @@ public class ActividadesModel {
     @Column(name = "fecha")
     private Date fecha;
 
+    @ManyToOne
+    @JoinColumn(name = "id_creador_ofertante")
+    private OfertanteModel Creador_ofertante;
+
+
+    public OfertanteModel getCreador_ofertante() {
+        return Creador_ofertante;
+    }
+
+    public void setCreador_ofertante(OfertanteModel creador_ofertante) {
+        Creador_ofertante = creador_ofertante;
+    }
+
     public int getId_actividad() {
         return id_actividad;
     }

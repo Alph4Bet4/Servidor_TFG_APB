@@ -47,4 +47,9 @@ public class ActividadesController {
 
     }
 
+    public ArrayList<ActividadesModel> getActividadesPorIdOfertante() {
+        //TODO hacer un getActividadPorIdOfertante
+        return null;
+    }
+
 }

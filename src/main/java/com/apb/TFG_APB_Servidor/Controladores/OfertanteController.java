@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Controladores;
 
+import com.apb.TFG_APB_Servidor.Modelos.ConsumidorModel;
 import com.apb.TFG_APB_Servidor.Modelos.OfertanteModel;
 import com.apb.TFG_APB_Servidor.Servicios.OfertanteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,17 @@ public class OfertanteController {
         return this.ofertanteServicio.getOfertantes();
     }
 
+    //FIXME arreglar
+    @GetMapping(path = "/{id}a")
+    public Optional<OfertanteModel> getOfertantePorId(@RequestBody int id) {
+        return this.ofertanteServicio.getOfertantePorId(id);
+    }
+
     @PostMapping
     public OfertanteModel guardarOfertante(@RequestBody OfertanteModel ofertante) {
         return this.ofertanteServicio.guardarOfertante(ofertante);
     }
+
 
     //Las llaves representan algo no definido
     @GetMapping(path = "/{id}")
@@ -50,4 +58,6 @@ public class OfertanteController {
             return "Ha ocurrido un error borrando un ofertante con id: " + id;
         }
     }
+
+
 }

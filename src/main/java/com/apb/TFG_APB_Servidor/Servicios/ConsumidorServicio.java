@@ -6,6 +6,7 @@ import com.apb.TFG_APB_Servidor.Repositorios.IConsumidorRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -16,7 +17,14 @@ public class ConsumidorServicio {
     IConsumidorRepositorio consumidorRepositorio;
 
     public ArrayList<ConsumidorModel> getConsumidores() {
-        return (ArrayList<ConsumidorModel>) consumidorRepositorio.findAll();
+        ArrayList<ConsumidorModel> listaConsumidores = (ArrayList<ConsumidorModel>) consumidorRepositorio.findAll();
+
+        //Tiene en cuenta la seguridad y oculta las contrasenias
+        for (ConsumidorModel consumidor : listaConsumidores) {
+            consumidor.setContrasenia("vacio");
+        }
+
+        return listaConsumidores;
     }
 
     public ConsumidorModel guardarConsumidor(ConsumidorModel nuevoConsumidor) {
@@ -52,5 +60,4 @@ public class ConsumidorServicio {
             return false;
         }
     }
-
 }

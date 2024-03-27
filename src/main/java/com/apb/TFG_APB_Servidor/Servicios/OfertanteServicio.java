@@ -1,6 +1,7 @@
 package com.apb.TFG_APB_Servidor.Servicios;
 
 import com.apb.TFG_APB_Servidor.Controladores.EmailController;
+import com.apb.TFG_APB_Servidor.Modelos.ConsumidorModel;
 import com.apb.TFG_APB_Servidor.Modelos.OfertanteModel;
 import com.apb.TFG_APB_Servidor.Repositorios.IOfertanteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,14 @@ public class OfertanteServicio {
     IOfertanteRepositorio ofertanteRepositorio;
 
     public ArrayList<OfertanteModel> getOfertantes() {
-        return (ArrayList<OfertanteModel>) ofertanteRepositorio.findAll();
+        ArrayList<OfertanteModel> listaOfertantes = (ArrayList<OfertanteModel>) ofertanteRepositorio.findAll();
+
+        //Tiene en cuenta la seguridad y oculta las contrasenias
+        for (OfertanteModel ofertante : listaOfertantes) {
+            ofertante.setContrasenia("vacio");
+        }
+
+        return listaOfertantes;
     }
 
     public OfertanteModel guardarOfertante(OfertanteModel ofertante) {
