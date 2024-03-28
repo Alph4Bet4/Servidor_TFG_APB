@@ -42,11 +42,6 @@ public class ActividadesModel {
     @JoinColumn(name = "id_creador_ofertante")
     private OfertanteModel Creador_ofertante;
 
-    //TODO seguramente necesite hacer más cosas
-
-    //TODO hacer una cantidad de personas por actividad en la bbdd y aquí
-
-
     public OfertanteModel getCreador_ofertante() {
         return Creador_ofertante;
     }

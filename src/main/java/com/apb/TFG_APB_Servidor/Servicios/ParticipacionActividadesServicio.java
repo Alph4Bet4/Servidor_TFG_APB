@@ -54,7 +54,13 @@ public class ParticipacionActividadesServicio {
     }
 
     public ParticipacionActividadesModel guardarParticipacion(ParticipacionActividadesModel participacion) {
-        return participacionActividadesRepositorio.save(participacion);
+        try {
+            return participacionActividadesRepositorio.save(participacion);
+        } catch (Exception e) {
+            System.out.println("- Alguien intentó unirse a una actividad imposible o con un consumidor inexistente");
+            return null;
+        }
+
     }
 
     public ParticipacionActividadesModel actualizarParticipacionPorId(ParticipacionActividadesModel participacionActualizar, int id) {
