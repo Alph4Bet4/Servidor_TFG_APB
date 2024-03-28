@@ -32,7 +32,6 @@ public class SugerenciaActividadesController {
 
     @PutMapping(path = "/{id}")
     public SugerenciaActividadesModel actualizarSugerencia(@RequestBody SugerenciaActividadesModel sugerencia, @PathVariable("id") int id) {
-        //FIXME arreglar que no capture el id
         return sugerenciaActividadesServicio.actualizarSugerenciaPorId(sugerencia, id);
     }
 

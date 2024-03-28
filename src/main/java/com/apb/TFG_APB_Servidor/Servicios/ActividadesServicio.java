@@ -55,9 +55,15 @@ public class ActividadesServicio {
         actividadAActualizar.setDescripcionActividad(actividadNueva.getDescripcionActividad());
         actividadAActualizar.setDireccion(actividadNueva.getDireccion());
         actividadAActualizar.setFecha(actividadNueva.getFecha());
+        actividadAActualizar.setHora_inicio(actividadNueva.getHora_inicio());
+        actividadAActualizar.setHora_fin(actividadNueva.getHora_fin());
+        actividadAActualizar.setCantidad_max_personas(actividadNueva.getCantidad_max_personas());
+        actividadAActualizar.setCantidad_actual_personas(actividadNueva.getCantidad_actual_personas());
         actividadAActualizar.setCreador_ofertante(actividadNueva.getCreador_ofertante());
 
-        return actividadNueva;
+        actividadesRepositorio.save(actividadAActualizar);
+
+        return actividadAActualizar;
     }
 
     public boolean borrarActividadPorId(int id) {

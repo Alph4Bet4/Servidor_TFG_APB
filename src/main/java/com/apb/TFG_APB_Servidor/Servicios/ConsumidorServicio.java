@@ -40,16 +40,18 @@ public class ConsumidorServicio {
     }
 
     public ConsumidorModel actualizarConsumidorPorId(ConsumidorModel consumidor, int id) {
-        ConsumidorModel consumidorUsuario = consumidorRepositorio.findById(id).get();
+        ConsumidorModel consumidorAActualizar = consumidorRepositorio.findById(id).get();
 
-        consumidorUsuario.setNombreConsumidor(consumidor.getNombreConsumidor());
-        consumidorUsuario.setPrimerApellidoConsumidor(consumidor.getPrimerApellidoConsumidor());
-        consumidorUsuario.setSegundoApellidoConsumidor(consumidor.getSegundoApellidoConsumidor());
+        consumidorAActualizar.setNombreConsumidor(consumidor.getNombreConsumidor());
+        consumidorAActualizar.setPrimerApellidoConsumidor(consumidor.getPrimerApellidoConsumidor());
+        consumidorAActualizar.setSegundoApellidoConsumidor(consumidor.getSegundoApellidoConsumidor());
         //TODO hashear contraseñas
-        consumidorUsuario.setContrasenia(consumidor.getContrasenia());
-        consumidorUsuario.setEmail_consumidor(consumidor.getEmail_consumidor());
+        consumidorAActualizar.setContrasenia(consumidor.getContrasenia());
+        consumidorAActualizar.setEmail_consumidor(consumidor.getEmail_consumidor());
 
-        return consumidorUsuario;
+        consumidorRepositorio.save(consumidorAActualizar);
+
+        return consumidorAActualizar;
     }
 
     public boolean borrarConsumidorPorId(int id) {

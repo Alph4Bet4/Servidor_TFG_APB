@@ -63,6 +63,7 @@ public class ParticipacionActividadesServicio {
         participacionNueva.setActividad(participacionActualizar.getActividad());
         participacionNueva.setConsumidor(participacionActualizar.getConsumidor());
 
+        participacionActividadesRepositorio.save(participacionNueva);
 
         return participacionNueva;
     }

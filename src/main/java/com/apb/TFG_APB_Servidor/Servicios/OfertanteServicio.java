@@ -42,17 +42,19 @@ public class OfertanteServicio {
     }
 
     public OfertanteModel actualizarOfertantePorId(OfertanteModel ofertante, int id) {
-        OfertanteModel ofertanteUsuario = ofertanteRepositorio.findById(id).get();
+        OfertanteModel ofertanteAActualizar = ofertanteRepositorio.findById(id).get();
 
-        ofertanteUsuario.setNombreOfertante(ofertante.getNombreOfertante());
-        ofertanteUsuario.setPrimerApellidoOfertante(ofertante.getPrimerApellidoOfertante());
-        ofertanteUsuario.setSegundoApellidoOfertante(ofertante.getSegundoApellidoOfertante());
+        ofertanteAActualizar.setNombreOfertante(ofertante.getNombreOfertante());
+        ofertanteAActualizar.setPrimerApellidoOfertante(ofertante.getPrimerApellidoOfertante());
+        ofertanteAActualizar.setSegundoApellidoOfertante(ofertante.getSegundoApellidoOfertante());
         //TODO hashear contraseñas
-        ofertanteUsuario.setContrasenia(ofertante.getContrasenia());
-        ofertanteUsuario.setNombreEmpresa(ofertante.getNombreEmpresa());
-        ofertanteUsuario.setEmail_ofertante(ofertante.getEmail_ofertante());
+        ofertanteAActualizar.setContrasenia(ofertante.getContrasenia());
+        ofertanteAActualizar.setNombreEmpresa(ofertante.getNombreEmpresa());
+        ofertanteAActualizar.setEmail_ofertante(ofertante.getEmail_ofertante());
 
-        return ofertanteUsuario;
+        ofertanteRepositorio.save(ofertanteAActualizar);
+
+        return ofertanteAActualizar;
     }
 
 
