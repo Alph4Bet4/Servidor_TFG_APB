@@ -37,8 +37,8 @@ public class RecursoController {
         return recursosServicio.actualizarRecurso(recurso, id);
     }
 
-    @DeleteMapping
-    public String borrarRecursoPorId(int id) {
+    @DeleteMapping(path = "/{id}")
+    public String borrarRecursoPorId(@PathVariable("id") int id) {
         boolean isBorrado = recursosServicio.borrarRecursoPorId(id);
 
         if (isBorrado) {

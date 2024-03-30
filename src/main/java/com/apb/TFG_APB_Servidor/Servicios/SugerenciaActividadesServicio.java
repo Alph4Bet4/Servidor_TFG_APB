@@ -47,7 +47,6 @@ public class SugerenciaActividadesServicio {
         sugerenciaNueva.setConsumidor(sugerenciaActualizar.getConsumidor());
         sugerenciaNueva.setActividad(sugerenciaActualizar.getActividad());
 
-        //TODO tengo que controlar: si se borran, si se actualizan
         sugerenciaActividadesRepositorio.save(sugerenciaNueva);
 
         return sugerenciaNueva;

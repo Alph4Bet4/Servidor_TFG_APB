@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Servicios;
 
+import com.apb.TFG_APB_Servidor.Modelos.OfertanteModel;
 import com.apb.TFG_APB_Servidor.Modelos.RecursosModel;
 import com.apb.TFG_APB_Servidor.Repositorios.IRecursosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,18 @@ public class RecursosServicio {
     IRecursosRepositorio recursosRepositorio;
 
     public ArrayList<RecursosModel> getRecursos(){
-        //TODO posiblemente tenga que ocultar las contraseñas
-        return (ArrayList<RecursosModel>) recursosRepositorio.findAll();
+        ArrayList<RecursosModel> listaRecursos = (ArrayList<RecursosModel>) recursosRepositorio.findAll();
+
+        for (RecursosModel recurso : listaRecursos) {
+            OfertanteModel ofertanteOcultarContrasenia = recurso.getActividad().getCreador_ofertante();
+                //Controlamos esto ya que la actividad puede ser sugerida
+            if (ofertanteOcultarContrasenia != null) {
+                ofertanteOcultarContrasenia.setContrasenia("vacio");
+            }
+
+        }
+
+        return listaRecursos;
     }
 
     public Optional<RecursosModel> getRecursoPorId(int id) {

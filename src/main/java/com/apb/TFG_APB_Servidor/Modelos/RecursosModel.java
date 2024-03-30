@@ -13,7 +13,7 @@ public class RecursosModel {
 
     @ManyToOne
     @JoinColumn(name = "id_actividad")
-    private int id_actividad;
+    private ActividadesModel actividad;
 
     @Column(name = "Nombre_recurso")
     private String nombre_recurso;
@@ -24,10 +24,9 @@ public class RecursosModel {
     @Column(name = "Cantidad")
     private int cantidad;
 
-    @Column(name = "isOfertadaPorOfertante")
+    @Column(name = "is_ofertada_por_ofertante")
     private boolean is_ofertada_por_ofertante;
 
-    //TODO hacer repositorio, servicio y controlador
 
     public int getId_recurso() {
         return id_recurso;
@@ -37,12 +36,12 @@ public class RecursosModel {
         this.id_recurso = id_recurso;
     }
 
-    public int getId_actividad() {
-        return id_actividad;
+    public ActividadesModel getActividad() {
+        return actividad;
     }
 
-    public void setId_actividad(int id_actividad) {
-        this.id_actividad = id_actividad;
+    public void setActividad(ActividadesModel actividad) {
+        this.actividad = actividad;
     }
 
     public String getNombre_recurso() {

@@ -24,10 +24,10 @@ public class OfertanteController {
         return this.ofertanteServicio.getOfertantes();
     }
 
-    //FIXME arreglar
-    @GetMapping(path = "/{id}a")
-    public Optional<OfertanteModel> getOfertantePorId(@RequestBody int id) {
-        return this.ofertanteServicio.getOfertantePorId(id);
+    @GetMapping(path = "/{nombre}&{contrasenia}&{email}")
+    public Optional<OfertanteModel> getOfertantePorDatos(@PathVariable("nombre") String nombre, @PathVariable("contrasenia") String contrasenia, @PathVariable("email") String email) {
+        //TODO
+        return null;
     }
 
     @PostMapping
