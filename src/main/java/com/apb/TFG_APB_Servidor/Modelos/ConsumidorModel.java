@@ -26,6 +26,7 @@ public class ConsumidorModel {
     @Column(name = "email_consumidor")
     private String email_consumidor;
 
+
     public String getContrasenia() {
         return contrasenia;
     }

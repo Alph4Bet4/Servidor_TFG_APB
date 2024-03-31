@@ -51,6 +51,7 @@ public class OfertanteServicio {
         ofertanteAActualizar.setContrasenia(ofertante.getContrasenia());
         ofertanteAActualizar.setNombreEmpresa(ofertante.getNombreEmpresa());
         ofertanteAActualizar.setEmail_ofertante(ofertante.getEmail_ofertante());
+        ofertanteAActualizar.setIs_administrador(ofertante.isIs_administrador());
 
         ofertanteRepositorio.save(ofertanteAActualizar);
 

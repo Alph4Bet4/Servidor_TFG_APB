@@ -32,6 +32,9 @@ public class OfertanteModel {
     @Column(name = "email_ofertante")
     private String email_ofertante;
 
+    @Column(name = "is_administrador")
+    private boolean is_administrador;
+
     public String getContrasenia() {
         return contrasenia;
     }
@@ -86,5 +89,13 @@ public class OfertanteModel {
 
     public void setNombreEmpresa(String nombreEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
+    }
+
+    public boolean isIs_administrador() {
+        return is_administrador;
+    }
+
+    public void setIs_administrador(boolean is_administrador) {
+        this.is_administrador = is_administrador;
     }
 }
