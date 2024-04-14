@@ -38,7 +38,11 @@ public class OfertanteServicio {
     }
 
     public Optional<OfertanteModel> getOfertantePorId(int id) {
-        return ofertanteRepositorio.findById(id);
+        Optional<OfertanteModel> ofertante = ofertanteRepositorio.findById(id);
+
+        ofertante.get().setContrasenia("vacio");
+
+        return ofertante;
     }
 
     public OfertanteModel actualizarOfertantePorId(OfertanteModel ofertante, int id) {

@@ -50,7 +50,14 @@ public class ParticipacionActividadesServicio {
     }
 
     public Optional<ParticipacionActividadesModel> getParticipacionPorId(int id) {
-        return participacionActividadesRepositorio.findById(id);
+        Optional<ParticipacionActividadesModel> participacion = participacionActividadesRepositorio.findById(id);
+
+        //Ocultamos las contrasenias
+        participacion.get().getActividad().getCreador_ofertante().setContrasenia("vacio");
+        participacion.get().getConsumidor().setContrasenia("vacio");
+
+
+        return participacion;
     }
 
     public ParticipacionActividadesModel guardarParticipacion(ParticipacionActividadesModel participacion) {

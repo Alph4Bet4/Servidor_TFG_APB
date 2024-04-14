@@ -36,7 +36,11 @@ public class ConsumidorServicio {
     }
 
     public Optional<ConsumidorModel> getConsumidorPorId(int id) {
-        return consumidorRepositorio.findById(id);
+        Optional<ConsumidorModel> consumidor = consumidorRepositorio.findById(id);
+
+        consumidor.get().setContrasenia("vacio");
+
+        return consumidor;
     }
 
     public ConsumidorModel actualizarConsumidorPorId(ConsumidorModel consumidor, int id) {

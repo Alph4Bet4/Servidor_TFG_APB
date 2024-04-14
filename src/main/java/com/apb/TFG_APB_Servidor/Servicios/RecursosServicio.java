@@ -31,7 +31,12 @@ public class RecursosServicio {
     }
 
     public Optional<RecursosModel> getRecursoPorId(int id) {
-        return recursosRepositorio.findById(id);
+        Optional<RecursosModel> recurso = recursosRepositorio.findById(id);
+
+        //Ocultamos la contrasenia
+        recurso.get().getActividad().getCreador_ofertante().setContrasenia("vacio");
+
+        return recurso;
     }
 
     public ArrayList<RecursosModel> getRecursosPorIdActividad() {

@@ -34,7 +34,13 @@ public class SugerenciaActividadesServicio {
     }
 
     public Optional<SugerenciaActividadesModel> getSugerenciaPorId(int id) {
-        return sugerenciaActividadesRepositorio.findById(id);
+        Optional<SugerenciaActividadesModel> sugerencia = sugerenciaActividadesRepositorio.findById(id);
+
+        //Ocultamos las contrasenias
+        sugerencia.get().getActividad().getCreador_ofertante().setContrasenia("vacio");
+        sugerencia.get().getConsumidor().setContrasenia("vacio");
+
+        return sugerencia;
     }
 
     public SugerenciaActividadesModel guardarSugerencia(SugerenciaActividadesModel sugerencia) {
