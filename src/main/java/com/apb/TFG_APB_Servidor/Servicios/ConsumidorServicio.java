@@ -5,8 +5,8 @@ import com.apb.TFG_APB_Servidor.Modelos.ConsumidorModel;
 import com.apb.TFG_APB_Servidor.Repositorios.IConsumidorRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pbkdf2.PBKDF2Encriptacion;
 
-import javax.swing.text.html.Option;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -30,9 +30,30 @@ public class ConsumidorServicio {
     public ConsumidorModel guardarConsumidor(ConsumidorModel nuevoConsumidor) {
         EmailController controladorEmail = new EmailController();
         if (controladorEmail.validar(nuevoConsumidor.getEmail_consumidor())) {
-            return consumidorRepositorio.save(nuevoConsumidor);
+            if (!comprobarEmailExistente(nuevoConsumidor.getEmail_consumidor())) {
+                return consumidorRepositorio.save(nuevoConsumidor);
+            }
+
         }
         return null;
+    }
+
+    /**
+     * Método que devuelve false si no existe un email, de otra forma devuelve verdadero
+     *
+     * @param email
+     * @return
+     */
+    public boolean comprobarEmailExistente(String email) {
+        ArrayList<ConsumidorModel> listaConsumidor = (ArrayList<ConsumidorModel>) consumidorRepositorio.findAll();
+
+        for (ConsumidorModel consumidor : listaConsumidor) {
+            if (consumidor.getEmail_consumidor().equals(email)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public Optional<ConsumidorModel> getConsumidorPorId(int id) {
@@ -49,8 +70,8 @@ public class ConsumidorServicio {
         consumidorAActualizar.setNombreConsumidor(consumidor.getNombreConsumidor());
         consumidorAActualizar.setPrimerApellidoConsumidor(consumidor.getPrimerApellidoConsumidor());
         consumidorAActualizar.setSegundoApellidoConsumidor(consumidor.getSegundoApellidoConsumidor());
-        //TODO hashear contraseñas
-        consumidorAActualizar.setContrasenia(consumidor.getContrasenia());
+        //Hasheamos la contrasenia
+        consumidorAActualizar.setContrasenia(new PBKDF2Encriptacion().encriptarPass(consumidor.getContrasenia()));
         consumidorAActualizar.setEmail_consumidor(consumidor.getEmail_consumidor());
 
         consumidorRepositorio.save(consumidorAActualizar);
@@ -65,5 +86,29 @@ public class ConsumidorServicio {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public Optional<ConsumidorModel> getConsumidorPorDatos(ConsumidorModel consumidor) {
+        ArrayList<ConsumidorModel> listaConsumidores = (ArrayList<ConsumidorModel>) consumidorRepositorio.findAll();
+        Optional<ConsumidorModel> consumidorDevolver = null;
+
+        for (ConsumidorModel consumidorModel : listaConsumidores) {
+
+            //Comprueba primeramente los usuarios para saber si alguno coincide
+            if (consumidorModel.getNombreConsumidor().equals(consumidor.getNombreConsumidor())) {
+                //Si coinciden pasa a comprobar el email que es único
+                if (consumidorModel.getEmail_consumidor().equals(consumidor.getEmail_consumidor())) {
+                    //Comprobamos las contraseñas
+                    PBKDF2Encriptacion pbkdf2Encriptacion = new PBKDF2Encriptacion();
+
+                    if (pbkdf2Encriptacion.verificarPass(consumidor.getContrasenia(), consumidorModel.getContrasenia())) {
+                        consumidorDevolver = Optional.of(consumidorModel);
+                    }
+
+                }
+            }
+        }
+
+        return consumidorDevolver;
     }
 }

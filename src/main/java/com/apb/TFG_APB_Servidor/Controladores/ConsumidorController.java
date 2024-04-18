@@ -33,6 +33,11 @@ public class ConsumidorController {
         return consumidorServicio.getConsumidorPorId(id);
     }
 
+    @PostMapping(path = "/login")
+    public Optional<ConsumidorModel> getConsumidorPorDatos(@RequestBody ConsumidorModel consumidor) {
+        return consumidorServicio.getConsumidorPorDatos(consumidor);
+    }
+
     @PutMapping(path = "/{id}")
     public ConsumidorModel actualizarConsumidorPorId(@RequestBody ConsumidorModel consumidor, @PathVariable("id") int id) {
         return consumidorServicio.actualizarConsumidorPorId(consumidor, id);

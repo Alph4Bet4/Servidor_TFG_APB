@@ -24,10 +24,9 @@ public class OfertanteController {
         return this.ofertanteServicio.getOfertantes();
     }
 
-    @GetMapping(path = "/{nombre}&{contrasenia}&{email}")
-    public Optional<OfertanteModel> getOfertantePorDatos(@PathVariable("nombre") String nombre, @PathVariable("contrasenia") String contrasenia, @PathVariable("email") String email) {
-        //TODO
-        return null;
+    @PostMapping(path = "/login")
+    public Optional<OfertanteModel> getOfertantePorDatos(@RequestBody OfertanteModel ofertante) {
+        return ofertanteServicio.getOfertantePorDatos(ofertante);
     }
 
     @PostMapping
