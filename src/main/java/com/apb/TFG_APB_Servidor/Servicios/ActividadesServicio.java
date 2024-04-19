@@ -63,6 +63,7 @@ public class ActividadesServicio {
         actividadAActualizar.setHora_fin(actividadNueva.getHora_fin());
         actividadAActualizar.setCantidad_max_personas(actividadNueva.getCantidad_max_personas());
         actividadAActualizar.setCantidad_actual_personas(actividadNueva.getCantidad_actual_personas());
+        actividadAActualizar.setEstadoActividad(actividadNueva.getEstadoActividad());
         actividadAActualizar.setCreador_ofertante(actividadNueva.getCreador_ofertante());
 
         actividadesRepositorio.save(actividadAActualizar);

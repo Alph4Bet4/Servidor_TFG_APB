@@ -38,9 +38,17 @@ public class ActividadesModel {
     @Column(name = "cantidad_actual_personas")
     private int cantidad_actual_personas;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado")
+    private tipoEstado estadoActividad;
+
     @ManyToOne
     @JoinColumn(name = "id_creador_ofertante")
     private OfertanteModel Creador_ofertante;
+
+    public enum tipoEstado {
+        Disponible, Finalizado, Completo, Cancelado
+    }
 
     public OfertanteModel getCreador_ofertante() {
         return Creador_ofertante;
@@ -120,5 +128,13 @@ public class ActividadesModel {
 
     public void setCantidad_actual_personas(int cantidad_actual_personas) {
         this.cantidad_actual_personas = cantidad_actual_personas;
+    }
+
+    public tipoEstado getEstadoActividad() {
+        return estadoActividad;
+    }
+
+    public void setEstadoActividad(tipoEstado estadoActividad) {
+        this.estadoActividad = estadoActividad;
     }
 }
