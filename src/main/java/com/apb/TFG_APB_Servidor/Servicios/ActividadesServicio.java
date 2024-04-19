@@ -47,7 +47,10 @@ public class ActividadesServicio {
     public Optional<ActividadesModel> getActividadPorId(int id) {
         Optional<ActividadesModel> actividades = actividadesRepositorio.findById(id);
 
-        actividades.get().getCreador_ofertante().setContrasenia("vacio");
+        if (actividades.get().getCreador_ofertante() != null) {
+            actividades.get().getCreador_ofertante().setContrasenia("vacio");
+        }
+
 
         return actividades;
     }
