@@ -47,7 +47,7 @@ public class ActividadesModel {
     private OfertanteModel Creador_ofertante;
 
     public enum tipoEstado {
-        Disponible, Finalizado, Completo, Cancelado
+        Disponible, Finalizado, Completo, Cancelado, EnCurso,
     }
 
     public OfertanteModel getCreador_ofertante() {
