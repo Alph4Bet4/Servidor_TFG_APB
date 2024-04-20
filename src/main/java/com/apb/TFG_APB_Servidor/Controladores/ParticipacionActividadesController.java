@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Controladores;
 
+import com.apb.TFG_APB_Servidor.Modelos.ActividadesModel;
 import com.apb.TFG_APB_Servidor.Modelos.ParticipacionActividadesModel;
 import com.apb.TFG_APB_Servidor.Servicios.ParticipacionActividadesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,11 @@ public class ParticipacionActividadesController {
     @GetMapping(path = "/{id}")
     public Optional<ParticipacionActividadesModel> getParticipacionPorId(@PathVariable("id") int id) {
         return participacionActividadesServicio.getParticipacionPorId(id);
+    }
+
+    @PostMapping(path = "/porIdActividad")
+    public ArrayList<ParticipacionActividadesModel> getParticipacionPorIdActividad(@RequestBody ActividadesModel actividad) {
+        return participacionActividadesServicio.getParticipacionPorIdActividad(actividad);
     }
 
     @PostMapping

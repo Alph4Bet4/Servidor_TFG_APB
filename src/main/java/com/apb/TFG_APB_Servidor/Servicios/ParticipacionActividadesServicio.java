@@ -60,6 +60,31 @@ public class ParticipacionActividadesServicio {
         return participacion;
     }
 
+    public ArrayList<ParticipacionActividadesModel> getParticipacionPorIdActividad(ActividadesModel actividad) {
+        ArrayList<ParticipacionActividadesModel> listaParticipacionesCompleta = (ArrayList<ParticipacionActividadesModel>) participacionActividadesRepositorio.findAll();
+        ArrayList<ParticipacionActividadesModel> listaParticipacionesADevolver = new ArrayList<>();
+
+        //Recorremos la lista para capturar las participaciones segun la actividad
+        for (ParticipacionActividadesModel participacion : listaParticipacionesCompleta) {
+            //Comparamos con la actividad pasada
+            if (participacion.getActividad().getId_actividad() == actividad.getId_actividad()) {
+                //Ocultamos la pass al usuario
+                participacion.getConsumidor().setContrasenia("vacio");
+
+                //Ocultamos la pass al creador por si tiene
+                if (participacion.getActividad().getCreador_ofertante() != null) {
+                    participacion.getActividad().getCreador_ofertante().setContrasenia("vacio");
+                }
+
+                listaParticipacionesADevolver.add(participacion);
+            }
+        }
+
+
+        return listaParticipacionesADevolver;
+    }
+
+
     public ParticipacionActividadesModel guardarParticipacion(ParticipacionActividadesModel participacion) {
         try {
             return participacionActividadesRepositorio.save(participacion);
