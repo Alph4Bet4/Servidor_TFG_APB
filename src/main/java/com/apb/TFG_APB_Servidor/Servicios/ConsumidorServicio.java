@@ -31,6 +31,8 @@ public class ConsumidorServicio {
         EmailController controladorEmail = new EmailController();
         if (controladorEmail.validar(nuevoConsumidor.getEmail_consumidor())) {
             if (!comprobarEmailExistente(nuevoConsumidor.getEmail_consumidor())) {
+                //Encriptamos la pass
+                nuevoConsumidor.setContrasenia(new PBKDF2Encriptacion().encriptarPass(nuevoConsumidor.getContrasenia()));
                 return consumidorRepositorio.save(nuevoConsumidor);
             }
 

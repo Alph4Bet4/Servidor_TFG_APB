@@ -34,6 +34,8 @@ public class OfertanteServicio {
         EmailController controladorEmail = new EmailController();
         if (controladorEmail.validar(ofertante.getEmail_ofertante())) {
             if (!comprobarEmailExistente(ofertante.getEmail_ofertante())) {
+                //Encriptamos la pass
+                ofertante.setContrasenia(new PBKDF2Encriptacion().encriptarPass(ofertante.getContrasenia()));
                 return ofertanteRepositorio.save(ofertante);
             }
         }
