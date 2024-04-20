@@ -38,7 +38,6 @@ public class ActividadesController {
     @DeleteMapping(path = "/{id}")
     public String borrarActividadPorId(@PathVariable("id") int id) {
         boolean isBorrado = actividadesServicio.borrarActividadPorId(id);
-        //TODO hacer un cascade para las personas inscritas, los recursos y por si se ha sugerido
         if (isBorrado) {
             return "Se ha borrado la actividad con id: " + id;
         } else {
@@ -47,9 +46,5 @@ public class ActividadesController {
 
     }
 
-    public ArrayList<ActividadesModel> getActividadesPorIdOfertante() {
-        //TODO hacer un getActividadPorIdOfertante
-        return null;
-    }
 
 }
