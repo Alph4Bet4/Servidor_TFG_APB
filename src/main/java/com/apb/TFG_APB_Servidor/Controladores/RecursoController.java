@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Controladores;
 
+import com.apb.TFG_APB_Servidor.Modelos.ActividadesModel;
 import com.apb.TFG_APB_Servidor.Modelos.RecursosModel;
 import com.apb.TFG_APB_Servidor.Servicios.RecursosServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,10 @@ public class RecursoController {
         return recursosServicio.getRecursoPorId(id);
     }
 
-    //TODO hacer un get recursos por id
+    @PostMapping(path = "/porIdActividad")
+    public ArrayList<RecursosModel> getRecursosPorIdActividad(@RequestBody ActividadesModel actividad){
+        return recursosServicio.getRecursosPorIdActividad(actividad);
+    }
 
     @PostMapping
     public RecursosModel guardarRecurso(@RequestBody RecursosModel recurso) {

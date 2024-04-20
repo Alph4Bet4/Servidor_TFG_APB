@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Servicios;
 
+import com.apb.TFG_APB_Servidor.Modelos.ActividadesModel;
 import com.apb.TFG_APB_Servidor.Modelos.OfertanteModel;
 import com.apb.TFG_APB_Servidor.Modelos.RecursosModel;
 import com.apb.TFG_APB_Servidor.Repositorios.IRecursosRepositorio;
@@ -39,9 +40,20 @@ public class RecursosServicio {
         return recurso;
     }
 
-    public ArrayList<RecursosModel> getRecursosPorIdActividad() {
-        //TODO
-        return null;
+    public ArrayList<RecursosModel> getRecursosPorIdActividad(ActividadesModel actividad) {
+        ArrayList<RecursosModel> listaRecursosCompleto = (ArrayList<RecursosModel>) recursosRepositorio.findAll();
+        ArrayList<RecursosModel> listaRecursosADevolver = new ArrayList<>();
+
+        //Recorremos el array para ver si la actividad tiene recursos
+        for (RecursosModel recurso : listaRecursosCompleto) {
+            //Comprobamos por el id de la actividad que se pasa por el body
+            if (recurso.getActividad().getId_actividad() == actividad.getId_actividad()) {
+                listaRecursosADevolver.add(recurso);
+            }
+        }
+
+
+        return listaRecursosADevolver;
     }
 
     public RecursosModel guardarRecurso(RecursosModel recurso) {
