@@ -27,7 +27,7 @@ public class ConsumidorServicio {
         return listaConsumidores;
     }
 
-    public ConsumidorModel guardarConsumidor(ConsumidorModel nuevoConsumidor) {
+    public synchronized ConsumidorModel guardarConsumidor(ConsumidorModel nuevoConsumidor) {
         EmailController controladorEmail = new EmailController();
         if (controladorEmail.validar(nuevoConsumidor.getEmail_consumidor())) {
             if (!comprobarEmailExistente(nuevoConsumidor.getEmail_consumidor())) {
@@ -66,7 +66,7 @@ public class ConsumidorServicio {
         return consumidor;
     }
 
-    public ConsumidorModel actualizarConsumidorPorId(ConsumidorModel consumidor, int id) {
+    public synchronized ConsumidorModel actualizarConsumidorPorId(ConsumidorModel consumidor, int id) {
         ConsumidorModel consumidorAActualizar = consumidorRepositorio.findById(id).get();
 
         consumidorAActualizar.setNombreConsumidor(consumidor.getNombreConsumidor());
@@ -81,7 +81,7 @@ public class ConsumidorServicio {
         return consumidorAActualizar;
     }
 
-    public boolean borrarConsumidorPorId(int id) {
+    public synchronized boolean borrarConsumidorPorId(int id) {
         try {
             consumidorRepositorio.deleteById(id);
             return true;

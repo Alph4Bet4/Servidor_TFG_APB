@@ -85,7 +85,7 @@ public class ParticipacionActividadesServicio {
     }
 
 
-    public ParticipacionActividadesModel guardarParticipacion(ParticipacionActividadesModel participacion) {
+    public synchronized ParticipacionActividadesModel guardarParticipacion(ParticipacionActividadesModel participacion) {
         try {
             return participacionActividadesRepositorio.save(participacion);
         } catch (Exception e) {
@@ -95,7 +95,7 @@ public class ParticipacionActividadesServicio {
 
     }
 
-    public ParticipacionActividadesModel actualizarParticipacionPorId(ParticipacionActividadesModel participacionActualizar, int id) {
+    public synchronized ParticipacionActividadesModel actualizarParticipacionPorId(ParticipacionActividadesModel participacionActualizar, int id) {
         ParticipacionActividadesModel participacionNueva = participacionActividadesRepositorio.findById(id).get();
 
         participacionNueva.setActividad(participacionActualizar.getActividad());
@@ -106,7 +106,7 @@ public class ParticipacionActividadesServicio {
         return participacionNueva;
     }
 
-    public boolean borrarParticipacionPorId(int id) {
+    public synchronized boolean borrarParticipacionPorId(int id) {
         try {
             participacionActividadesRepositorio.deleteById(id);
             return true;

@@ -43,11 +43,11 @@ public class SugerenciaActividadesServicio {
         return sugerencia;
     }
 
-    public SugerenciaActividadesModel guardarSugerencia(SugerenciaActividadesModel sugerencia) {
+    public synchronized SugerenciaActividadesModel guardarSugerencia(SugerenciaActividadesModel sugerencia) {
         return sugerenciaActividadesRepositorio.save(sugerencia);
     }
 
-    public SugerenciaActividadesModel actualizarSugerenciaPorId(SugerenciaActividadesModel sugerenciaActualizar, int id) {
+    public synchronized SugerenciaActividadesModel actualizarSugerenciaPorId(SugerenciaActividadesModel sugerenciaActualizar, int id) {
         SugerenciaActividadesModel sugerenciaNueva = sugerenciaActividadesRepositorio.findById(id).get();
 
         sugerenciaNueva.setConsumidor(sugerenciaActualizar.getConsumidor());
@@ -58,7 +58,7 @@ public class SugerenciaActividadesServicio {
         return sugerenciaNueva;
     }
 
-    public boolean borrarSugerencia(int id) {
+    public synchronized boolean borrarSugerencia(int id) {
         try {
             sugerenciaActividadesRepositorio.deleteById(id);
             return true;

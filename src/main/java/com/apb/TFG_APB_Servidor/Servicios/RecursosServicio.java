@@ -56,11 +56,11 @@ public class RecursosServicio {
         return listaRecursosADevolver;
     }
 
-    public RecursosModel guardarRecurso(RecursosModel recurso) {
+    public synchronized RecursosModel guardarRecurso(RecursosModel recurso) {
         return recursosRepositorio.save(recurso);
     }
 
-    public RecursosModel actualizarRecurso(RecursosModel recursoNuevo, int id) {
+    public synchronized RecursosModel actualizarRecurso(RecursosModel recursoNuevo, int id) {
         RecursosModel recursoAActualizar = recursosRepositorio.findById(id).get();
 
         recursoAActualizar.setNombre_recurso(recursoNuevo.getNombre_recurso());
@@ -73,7 +73,7 @@ public class RecursosServicio {
         return recursoAActualizar;
     }
 
-    public boolean borrarRecursoPorId(int id) {
+    public synchronized boolean borrarRecursoPorId(int id) {
         try {
             recursosRepositorio.deleteById(id);
             return true;

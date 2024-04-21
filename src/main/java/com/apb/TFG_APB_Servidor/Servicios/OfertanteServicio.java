@@ -30,7 +30,7 @@ public class OfertanteServicio {
         return listaOfertantes;
     }
 
-    public OfertanteModel guardarOfertante(OfertanteModel ofertante) {
+    public synchronized OfertanteModel guardarOfertante(OfertanteModel ofertante) {
         EmailController controladorEmail = new EmailController();
         if (controladorEmail.validar(ofertante.getEmail_ofertante())) {
             if (!comprobarEmailExistente(ofertante.getEmail_ofertante())) {
@@ -67,7 +67,7 @@ public class OfertanteServicio {
         return ofertante;
     }
 
-    public OfertanteModel actualizarOfertantePorId(OfertanteModel ofertante, int id) {
+    public synchronized OfertanteModel actualizarOfertantePorId(OfertanteModel ofertante, int id) {
         OfertanteModel ofertanteAActualizar = ofertanteRepositorio.findById(id).get();
 
         ofertanteAActualizar.setNombreOfertante(ofertante.getNombreOfertante());
@@ -85,7 +85,7 @@ public class OfertanteServicio {
     }
 
 
-    public boolean borrarOfertante(int id) {
+    public synchronized boolean borrarOfertante(int id) {
         try {
             ofertanteRepositorio.deleteById(id);
             return true;

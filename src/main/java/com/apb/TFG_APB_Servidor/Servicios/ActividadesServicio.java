@@ -40,7 +40,7 @@ public class ActividadesServicio {
         return listaActividades;
     }
 
-    public ActividadesModel guardarActividad(ActividadesModel actividad) {
+    public synchronized ActividadesModel guardarActividad(ActividadesModel actividad) {
         return actividadesRepositorio.save(actividad);
     }
 
@@ -55,7 +55,7 @@ public class ActividadesServicio {
         return actividades;
     }
 
-    public ActividadesModel actualizarActividadPorId(ActividadesModel actividadNueva, int id) {
+    public synchronized ActividadesModel actualizarActividadPorId(ActividadesModel actividadNueva, int id) {
         ActividadesModel actividadAActualizar = actividadesRepositorio.findById(id).get();
 
         actividadAActualizar.setTipoActividad(actividadNueva.getTipoActividad());
@@ -74,7 +74,7 @@ public class ActividadesServicio {
         return actividadAActualizar;
     }
 
-    public boolean borrarActividadPorId(int id) {
+    public synchronized boolean borrarActividadPorId(int id) {
         try {
             actividadesRepositorio.deleteById(id);
             return true;
