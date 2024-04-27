@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Servicios;
 
+import com.apb.TFG_APB_Servidor.Modelos.ActividadesModel;
 import com.apb.TFG_APB_Servidor.Modelos.ConsumidorModel;
 import com.apb.TFG_APB_Servidor.Modelos.SugerenciaActividadesModel;
 import com.apb.TFG_APB_Servidor.Repositorios.ISugerenciaActividadesRepositorio;
@@ -31,6 +32,19 @@ public class SugerenciaActividadesServicio {
         }
 
         return sugerenciaActividadesModel;
+    }
+
+    public SugerenciaActividadesModel getSugerenciaPorIdActividad(ActividadesModel actividad) {
+        ArrayList<SugerenciaActividadesModel> listaSugerencias = (ArrayList<SugerenciaActividadesModel>) sugerenciaActividadesRepositorio.findAll();
+        SugerenciaActividadesModel sugerenciaDevolver = null;
+
+        for (SugerenciaActividadesModel sugerencia : listaSugerencias) {
+            if (sugerencia.getActividad().getId_actividad() == actividad.getId_actividad()) {
+                sugerenciaDevolver = sugerencia;
+            }
+        }
+
+        return sugerenciaDevolver;
     }
 
     public Optional<SugerenciaActividadesModel> getSugerenciaPorId(int id) {

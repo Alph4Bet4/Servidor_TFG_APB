@@ -1,5 +1,6 @@
 package com.apb.TFG_APB_Servidor.Controladores;
 
+import com.apb.TFG_APB_Servidor.Modelos.ActividadesModel;
 import com.apb.TFG_APB_Servidor.Modelos.SugerenciaActividadesModel;
 import com.apb.TFG_APB_Servidor.Servicios.SugerenciaActividadesServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class SugerenciaActividadesController {
     @PostMapping
     public SugerenciaActividadesModel guardarSugerencia(@RequestBody SugerenciaActividadesModel sugerencia) {
         return sugerenciaActividadesServicio.guardarSugerencia(sugerencia);
+    }
+
+    @PostMapping(path = "/obtenerPorId")
+    public SugerenciaActividadesModel getSugerenciaPorIdActividad(@RequestBody ActividadesModel actividad) {
+        return sugerenciaActividadesServicio.getSugerenciaPorIdActividad(actividad);
     }
 
     @PutMapping(path = "/{id}")
