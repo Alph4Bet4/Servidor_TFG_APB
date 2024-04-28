@@ -115,4 +115,16 @@ public class ParticipacionActividadesServicio {
         }
     }
 
+    public ArrayList<ParticipacionActividadesModel> getParticipacionPorIdConsumidor(int id) {
+        ArrayList<ParticipacionActividadesModel> listaParticipaciones = (ArrayList<ParticipacionActividadesModel>) participacionActividadesRepositorio.findAll();
+        ArrayList<ParticipacionActividadesModel> listaParticipantesDevolver = new ArrayList<>();
+
+        for (ParticipacionActividadesModel participacion : listaParticipaciones) {
+            if (participacion.getConsumidor().getId_consumidor() == id) {
+                listaParticipantesDevolver.add(participacion);
+            }
+        }
+
+        return listaParticipantesDevolver;
+    }
 }

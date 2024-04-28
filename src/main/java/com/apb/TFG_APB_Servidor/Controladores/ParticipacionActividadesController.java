@@ -26,6 +26,11 @@ public class ParticipacionActividadesController {
         return participacionActividadesServicio.getParticipacionPorId(id);
     }
 
+    @GetMapping(path = "/consumidorConId_{id}")
+    public ArrayList<ParticipacionActividadesModel> getParticipacionPorIdConsumidor(@PathVariable("id") int id) {
+        return participacionActividadesServicio.getParticipacionPorIdConsumidor(id);
+    }
+
     @PostMapping(path = "/porIdActividad")
     public ArrayList<ParticipacionActividadesModel> getParticipacionPorIdActividad(@RequestBody ActividadesModel actividad) {
         return participacionActividadesServicio.getParticipacionPorIdActividad(actividad);
