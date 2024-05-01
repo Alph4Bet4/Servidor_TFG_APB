@@ -37,7 +37,7 @@ CREATE TABLE `actividades` (
   PRIMARY KEY (`id_actividad`),
   KEY `id_creador_ofertante_idx` (`id_creador_ofertante`),
   CONSTRAINT `id_creador_ofertante` FOREIGN KEY (`id_creador_ofertante`) REFERENCES `ofertante` (`id_ofertante`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `actividades` (
 
 LOCK TABLES `actividades` WRITE;
 /*!40000 ALTER TABLE `actividades` DISABLE KEYS */;
-INSERT INTO `actividades` VALUES (1,'Salto de 5m','Enseña a personas a saltar a 5 metros','Calle Puerta Frita','2023-02-25','19:31:00','20:31:00',3,3,'Disponible',1),(2,'Cocina','Una actividad que enseñe a cocinar comida con pasta.','Parque de Miraflores','2024-06-19','15:00:00','15:00:00',10,0,'Disponible',4),(3,'Cocina a lo natural','Enseña a personas a cocinar con cosas encontradas en un campo','Av. Ronda Norte, 33-31','2024-05-02','19:30:00','20:31:00',4,0,'Disponible',NULL),(4,'Canto','Quedada para cantar ','La Giralda','2024-04-20','12:04:00','12:10:00',5,0,'Finalizado',1),(5,'Parkour','Clases de parkour personalizadas','Puerta Jerez','2024-04-20','12:18:00','12:20:00',1,0,'Finalizado',2),(6,'Dibujo','Eseñamos a personas a dibujar como verdaderos profesionales.','C. Ramón Areces','2024-04-23','15:00:00','17:00:00',3,0,'Disponible',2),(7,'Juegos de mesa','Quiero a una persona que me enseñe varios juegos de mesa','Isla Mágica','2024-06-28','17:00:00','20:30:00',5,0,'Disponible',NULL),(52,'Club de la lectura','Vamos a hacer una quedada para leer el libro de las mil historias','Parque del Alamillo','2024-07-18','10:00:00','15:00:00',5,0,'Disponible',4);
+INSERT INTO `actividades` VALUES (1,'Salto de 5m','Enseña a personas a saltar a 5 metros','Calle Puerta Frita','2023-02-25','19:31:00','20:31:00',3,1,'Finalizado',1),(2,'Cocina','Una actividad que enseñe a cocinar comida con pasta.','Parque de Miraflores','2024-06-19','15:00:00','15:00:00',10,1,'Disponible',4),(3,'Cocina a lo natural','Enseña a personas a cocinar con cosas encontradas en un campito','Av. Ronda Norte, 33-31','2024-05-02','19:30:00','20:31:00',5,0,'Disponible',6),(4,'Canto','Quedada para cantar ','La Giralda','2024-04-20','12:04:00','12:10:00',5,0,'Finalizado',1),(5,'Parkour','Clases de parkour personalizadas','Puerta Jerez','2024-04-20','12:18:00','12:20:00',1,0,'Finalizado',2),(6,'Dibujo','Eseñamos a personas a dibujar como verdaderos profesionales.','C. Ramón Areces','2024-04-23','15:00:00','17:00:00',3,0,'Finalizado',2),(52,'Club de la lectura','Vamos a hacer una quedada para leer el libro de las mil historias','Parque del Alamillo','2024-07-18','10:00:00','15:00:00',5,0,'Disponible',4),(102,'Dibujo','Vamos a dibujar todos en el parque','Parque de los Príncipes','2024-08-15','20:00:00','00:00:00',2,2,'Completo',8);
 /*!40000 ALTER TABLE `actividades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,7 +68,7 @@ CREATE TABLE `actividades_seq` (
 
 LOCK TABLES `actividades_seq` WRITE;
 /*!40000 ALTER TABLE `actividades_seq` DISABLE KEYS */;
-INSERT INTO `actividades_seq` VALUES (151);
+INSERT INTO `actividades_seq` VALUES (251);
 /*!40000 ALTER TABLE `actividades_seq` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `consumidor` (
   `email_consumidor` varchar(100) NOT NULL,
   PRIMARY KEY (`id_consumidor`),
   UNIQUE KEY `email_consumidor_UNIQUE` (`email_consumidor`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `consumidor` (
 
 LOCK TABLES `consumidor` WRITE;
 /*!40000 ALTER TABLE `consumidor` DISABLE KEYS */;
-INSERT INTO `consumidor` VALUES (1,'Alberto','Rodrigez','Gutierrez','1000:398a0bfc249d3a70e35763fe15387673:8b1217e376a8daaace199155dabbb49668b5a49c57f0b84dacabd37ff8b51b23','asdqwe@adsqwe.es'),(6,'Rafael Antonio','Ortega','Romero del Castillo','1000:f2fa9387efd94b1de429ca6da62d2214:00140d02bfeaaa08061ff0e33bbccb52b1981b7c9946730d6feb87687a6cf621','rafaorc@gmail.com'),(8,'Lorena','Cabello','Corriente','1000:90f9f62cf088cf8d674ea39402b3d907:fc5f5cdc9f1eceb10b96c4dc8095dedb7dd405a905e0cd231e77a1efab24b10e','lorecc@gmail.com');
+INSERT INTO `consumidor` VALUES (1,'Alberto','Rodrigez','Gutierrez','1000:398a0bfc249d3a70e35763fe15387673:8b1217e376a8daaace199155dabbb49668b5a49c57f0b84dacabd37ff8b51b23','asdqwe@adsqwe.es'),(6,'Rafael Antonio','Ortega','Romero del Castillo','1000:f2fa9387efd94b1de429ca6da62d2214:00140d02bfeaaa08061ff0e33bbccb52b1981b7c9946730d6feb87687a6cf621','rafaorc@gmail.com'),(8,'Lorena','Cabello','Corriente','1000:90f9f62cf088cf8d674ea39402b3d907:fc5f5cdc9f1eceb10b96c4dc8095dedb7dd405a905e0cd231e77a1efab24b10e','lorecc@gmail.com'),(9,'Adrian','Perez','Blanco','1000:366a382889e019ea3577e805ffe55ea6:8b53146bd7ca49dd0d3363867a15198d6b103bb8d3715ff193c5ecb919d128ef','aperbla737@gmail.com'),(10,'francisco javier','perez','lindo','1000:9daa527328d8fb12b62312dbbcd40f29:352b38a02d6f3dbe46be17091f9196203c0a45707e2bd256f55ab6ce53de4bba','pelindo@gmail.com');
 /*!40000 ALTER TABLE `consumidor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +145,7 @@ CREATE TABLE `ofertante` (
   `is_administrador` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id_ofertante`),
   UNIQUE KEY `email_UNIQUE` (`email_ofertante`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `ofertante` (
 
 LOCK TABLES `ofertante` WRITE;
 /*!40000 ALTER TABLE `ofertante` DISABLE KEYS */;
-INSERT INTO `ofertante` VALUES (1,'Daniel','Ruano','Ruiz','1000:206e9cea6f73304e202c2667489f2444:ad12bc1f3c2312a52dc70d610e7d123c5a8c94b3e6fbf2dc40895bddae301145','null','a@a.es',_binary '\0'),(2,'Adrian','Perez','Blanco','1000:71802675961a9b546a3a169a5081c31d:9fb589e97d276632a43ae9e04637fe57a975ff0be0047f36b9e0f7b3d1a8c3e4','Pruebas AAA.','aperez@gmail.com',_binary '\0'),(3,'Lucia','Ortega','Velazquez','1000:a139fdaf6bdaef8aa581ec25e5d89d10:2b4e6b1d8cf8e28251d216099061c4f302a135440ed735288c8440ba33383d5e','null','LuxiaVO@gmail.com',_binary '\0'),(4,'Susana','Ortega','Vazquez','1000:d458084944f93596e88d5d3011f4bab5:65236e70ea22bcebefc18a109fdaf209da126870effa2eff922a60f2fe683b35','Serraderia S.A.','suovo981@gmail.com',_binary '\0'),(5,'root','','','1000:a4a0549b48faa354a12e2d6b4e0bc9eb:97d4554dc6ce1b8c300b1b45597ae942e131b5827d83dae354770a504c5806e1','null','root@root.es',_binary '');
+INSERT INTO `ofertante` VALUES (1,'Daniel','Ruano','Ruiz','1000:206e9cea6f73304e202c2667489f2444:ad12bc1f3c2312a52dc70d610e7d123c5a8c94b3e6fbf2dc40895bddae301145','null','a@a.es',_binary '\0'),(2,'Adrian','Perez','Blanco','1000:71802675961a9b546a3a169a5081c31d:9fb589e97d276632a43ae9e04637fe57a975ff0be0047f36b9e0f7b3d1a8c3e4','Pruebas AAA.','aperbla737@g.educaand.es',_binary '\0'),(3,'Lucia','Ortega','Velazquez','1000:a139fdaf6bdaef8aa581ec25e5d89d10:2b4e6b1d8cf8e28251d216099061c4f302a135440ed735288c8440ba33383d5e','null','LuxiaVO@gmail.com',_binary '\0'),(4,'Susana','Ortega','Vazquez','1000:d458084944f93596e88d5d3011f4bab5:65236e70ea22bcebefc18a109fdaf209da126870effa2eff922a60f2fe683b35','Serraderia S.A.','suovo981@gmail.com',_binary '\0'),(5,'root','','','1000:a4a0549b48faa354a12e2d6b4e0bc9eb:97d4554dc6ce1b8c300b1b45597ae942e131b5827d83dae354770a504c5806e1','null','root@root.es',_binary ''),(6,'Irene','Cabello','Corriente','1000:c307e4db3f2d685856b6367076652d63:f056a9b88274b67a79d0f8716e88e8a17c4f9220f48823d5fdeac746ecdd71fe','null','icc@gmail.com',_binary '\0'),(7,'Francisco Javier','Perez','Lindo','1000:33f0689e719e14d79cd8e8ed298b1b40:66fe23cbef155721128d1cca9241436bd45230bc9c0481050d8615b0c8edaba8','null','frpel@gmail.com',_binary '\0'),(8,'Marco Antonio','Herrera','Luján','1000:6d6790843e2a9a8422ade0321aef3429:86e18efe1ad33fbf50655448378963519513eaba137b097da64770da067eded7','null','marcoant@gmail.com',_binary '\0'),(9,'Sergio','Alfonseca','','1000:46846b9ea9d3c6571a6c52ba735b410f:7deca35be32a62970cd52aff555f294091c29297e0f27d4a6754b8fb289ebb93','Soldaditos de papel','sergga@gmail.com',_binary '\0');
 /*!40000 ALTER TABLE `ofertante` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +174,7 @@ CREATE TABLE `participacion_actividades` (
   KEY `id_actividad_participacion_idx` (`id_actividad`),
   CONSTRAINT `id_actividad_participacion` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`),
   CONSTRAINT `id_consumidor_participacion` FOREIGN KEY (`id_consumidor`) REFERENCES `consumidor` (`id_consumidor`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,7 +183,7 @@ CREATE TABLE `participacion_actividades` (
 
 LOCK TABLES `participacion_actividades` WRITE;
 /*!40000 ALTER TABLE `participacion_actividades` DISABLE KEYS */;
-INSERT INTO `participacion_actividades` VALUES (3,1,1),(13,1,6),(14,1,8);
+INSERT INTO `participacion_actividades` VALUES (3,1,1),(33,2,8),(35,102,9),(43,102,8);
 /*!40000 ALTER TABLE `participacion_actividades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +204,7 @@ CREATE TABLE `recursos` (
   PRIMARY KEY (`id_Recurso`),
   KEY `id_actividad_recurso_idx` (`id_actividad`),
   CONSTRAINT `id_actividad_recurso` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `recursos` (
 
 LOCK TABLES `recursos` WRITE;
 /*!40000 ALTER TABLE `recursos` DISABLE KEYS */;
-INSERT INTO `recursos` VALUES (3,52,'Silla','Necesitaremos una silla para no cansarnos',1,_binary '\0'),(4,52,'Libro','El libro del que vamos a hablar',5,_binary '');
+INSERT INTO `recursos` VALUES (3,52,'Silla','Necesitaremos una silla para no cansarnos',1,_binary '\0'),(4,52,'Libro','El libro del que vamos a hablar',5,_binary ''),(5,102,'Pincel','Un pincel para pintar',1,_binary '\0'),(6,102,'Lienzo','Lienzo para dibujar algo',2,_binary ''),(7,102,'Paleta','Una paleta para echar los colores',3,_binary ''),(13,3,'Sarten','Para cocinar huevos',5,_binary ''),(14,3,'Sarten','Para cocinar huevos',5,_binary '');
 /*!40000 ALTER TABLE `recursos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +233,7 @@ CREATE TABLE `sugerencia_actividades` (
   KEY `id_actividad_idx` (`id_actividad_sugerida`),
   CONSTRAINT `id_actividad` FOREIGN KEY (`id_actividad_sugerida`) REFERENCES `actividades` (`id_actividad`),
   CONSTRAINT `id_consumidor` FOREIGN KEY (`id_consumidor`) REFERENCES `consumidor` (`id_consumidor`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,7 +242,7 @@ CREATE TABLE `sugerencia_actividades` (
 
 LOCK TABLES `sugerencia_actividades` WRITE;
 /*!40000 ALTER TABLE `sugerencia_actividades` DISABLE KEYS */;
-INSERT INTO `sugerencia_actividades` VALUES (1,1,1),(2,1,3),(3,6,7),(4,8,2);
+INSERT INTO `sugerencia_actividades` VALUES (1,1,1),(2,1,3),(4,8,2);
 /*!40000 ALTER TABLE `sugerencia_actividades` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -255,4 +255,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-21 19:38:46
+-- Dump completed on 2024-05-01 11:14:21
