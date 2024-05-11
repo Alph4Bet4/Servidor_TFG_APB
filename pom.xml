@@ -36,6 +36,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.apb.TFG_APB_Lib</groupId>
+			<artifactId>EncriptacionPassLib_APB</artifactId>
+			<version>1.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/EncriptacionPassLib_APB.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
