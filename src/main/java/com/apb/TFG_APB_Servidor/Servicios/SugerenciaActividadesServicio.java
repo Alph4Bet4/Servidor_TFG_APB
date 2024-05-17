@@ -57,6 +57,26 @@ public class SugerenciaActividadesServicio {
         return sugerencia;
     }
 
+    public ArrayList<SugerenciaActividadesModel> getSugerenciasPorIdConsumidor(int idConsumidor) {
+        ArrayList<SugerenciaActividadesModel> sugerenciaActividadesModel = (ArrayList<SugerenciaActividadesModel>) sugerenciaActividadesRepositorio.findAll();
+        ArrayList<SugerenciaActividadesModel> listaADevolver = new ArrayList<>();
+
+        for (SugerenciaActividadesModel sugerencia : sugerenciaActividadesModel) {
+            if (sugerencia.getConsumidor().getId_consumidor() == idConsumidor) {
+                //Capturamos al consumidor que queremos ocultarle la contrasenia
+                ConsumidorModel consumidorOcultarContrasenia = sugerencia.getConsumidor();
+                if (consumidorOcultarContrasenia != null) {
+                    //Le ocultamos la contrasenia
+                    consumidorOcultarContrasenia.setContrasenia("vacio");
+                    sugerencia.setConsumidor(consumidorOcultarContrasenia);
+                    listaADevolver.add(sugerencia);
+                }
+            }
+        }
+
+        return listaADevolver;
+    }
+
     public synchronized SugerenciaActividadesModel guardarSugerencia(SugerenciaActividadesModel sugerencia) {
         return sugerenciaActividadesRepositorio.save(sugerencia);
     }

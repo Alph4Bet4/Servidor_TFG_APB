@@ -26,6 +26,11 @@ public class SugerenciaActividadesController {
         return sugerenciaActividadesServicio.getSugerenciaPorId(id);
     }
 
+    @GetMapping(path = "/obtenerPorIdConsumidor_{idConsumidor}")
+    public ArrayList<SugerenciaActividadesModel> getSugerenciaPorIdConsumidor(@PathVariable("idConsumidor") int idConsumidor) {
+        return sugerenciaActividadesServicio.getSugerenciasPorIdConsumidor(idConsumidor);
+    }
+
     @PostMapping
     public SugerenciaActividadesModel guardarSugerencia(@RequestBody SugerenciaActividadesModel sugerencia) {
         return sugerenciaActividadesServicio.guardarSugerencia(sugerencia);
