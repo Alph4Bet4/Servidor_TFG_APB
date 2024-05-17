@@ -40,6 +40,32 @@ public class ActividadesServicio {
         return listaActividades;
     }
 
+    public ArrayList<ActividadesModel> getActividadesPorIdOfertante(int idOfertante) {
+        ArrayList<ActividadesModel> listaActividades = (ArrayList<ActividadesModel>) actividadesRepositorio.findAll();
+        ArrayList<ActividadesModel> listaActividadesDevolver = new ArrayList<>();
+
+        for (ActividadesModel actividad : listaActividades) {
+            if (actividad.getCreador_ofertante() != null) {
+                if (actividad.getCreador_ofertante().getId_ofertante() == idOfertante) {
+                    //Capturamos al ofertante
+                    OfertanteModel ofertanteOcultarContrasenia = actividad.getCreador_ofertante();
+                    //Tenemos en cuenta de que puede ser null para diferentes actividades
+                    if (ofertanteOcultarContrasenia != null) {
+                        //Ocultamos la contrasenia
+                        ofertanteOcultarContrasenia.setContrasenia("vacio");
+
+                        //Lo agregamos a la actividad para que no se vea la contrasenia
+                        actividad.setCreador_ofertante(ofertanteOcultarContrasenia);
+
+                        listaActividadesDevolver.add(actividad);
+                    }
+                }
+            }
+        }
+
+        return listaActividadesDevolver;
+    }
+
     public synchronized ActividadesModel guardarActividad(ActividadesModel actividad) {
         return actividadesRepositorio.save(actividad);
     }

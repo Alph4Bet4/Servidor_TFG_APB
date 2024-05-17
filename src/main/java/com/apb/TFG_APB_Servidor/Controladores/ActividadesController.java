@@ -30,6 +30,11 @@ public class ActividadesController {
         return actividadesServicio.getActividadPorId(id);
     }
 
+    @GetMapping(path = "/porIdOfertante_{id}")
+    public ArrayList<ActividadesModel> getActividadesPorIdOfertante(@PathVariable("id") int id) {
+        return actividadesServicio.getActividadesPorIdOfertante(id);
+    }
+
     @PutMapping(path = "/{id}")
     public ActividadesModel actualizarActividadPorId(@RequestBody ActividadesModel actividad, @PathVariable("id") int id) {
         return actividadesServicio.actualizarActividadPorId(actividad, id);
